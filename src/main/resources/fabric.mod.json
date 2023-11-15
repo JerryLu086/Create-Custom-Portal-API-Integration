@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "ccpapii",
+  "version": "${version}",
+  "name": "Create Custom Portal API Integration",
+  "description": "Adds Custom Portal API Integration for Create trains so you can shove them onto the moon!",
+  "authors": [
+    "ReignOfFROZE"
+  ],
+  "contact": {
+    "sources": "https://github.com/Fabricators-of-Create/create-fabric-addon-template"
+  },
+  "license": "CC0",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "reign.createaddons.ccpapii.CCPAPII"
+    ]
+  },
+  "mixins": [
+    "ccpapii.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${fabric_loader_version}",
+    "fabric-api": ">=${fabric_api_version}",
+    "create": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

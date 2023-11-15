@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "reign.createaddons.ccpapii.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "CustomPortalBlockMixin",
+    "SuperGlueEntityMixin",
+    "TrackBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
