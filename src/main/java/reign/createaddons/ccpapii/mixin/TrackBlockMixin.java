@@ -3,11 +3,11 @@ package reign.createaddons.ccpapii.mixin;
 import java.util.Random;
 
 import com.google.common.base.Predicates;
-import com.simibubi.create.content.contraptions.glue.SuperGlueEntity;
-import com.simibubi.create.content.trains.track.TrackBlock;
-import com.simibubi.create.content.trains.track.TrackBlockEntity;
-import com.simibubi.create.content.trains.track.TrackPropagator;
-import com.simibubi.create.content.trains.track.TrackShape;
+import com.simibubi.create.content.contraptions.components.structureMovement.glue.SuperGlueEntity;
+import com.simibubi.create.content.logistics.trains.TrackPropagator;
+import com.simibubi.create.content.logistics.trains.track.TrackBlock;
+import com.simibubi.create.content.logistics.trains.track.TrackShape;
+import com.simibubi.create.content.logistics.trains.track.TrackTileEntity;
 import com.simibubi.create.foundation.utility.BlockFace;
 import com.simibubi.create.foundation.utility.Components;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -43,8 +43,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import reign.createaddons.ccpapii.SuperGlueEntityAccessor;
 
-import static com.simibubi.create.content.trains.track.TrackBlock.HAS_BE;
-import static com.simibubi.create.content.trains.track.TrackBlock.SHAPE;
+import static com.simibubi.create.content.logistics.trains.track.TrackBlock.HAS_TE;
+import static com.simibubi.create.content.logistics.trains.track.TrackBlock.SHAPE;
 
 @Mixin(TrackBlock.class)
 public abstract class TrackBlockMixin {
@@ -91,16 +91,16 @@ public abstract class TrackBlockMixin {
 			}
 
 			level.setBlock(pos, state.setValue(SHAPE, TrackShape.asPortal(d))
-					.setValue(HAS_BE, true), 3);
+					.setValue(HAS_TE, true), 3);
 			BlockEntity be = level.getBlockEntity(pos);
-			if (be instanceof TrackBlockEntity tbe)
-				tbe.bind(otherLevel.dimension(), otherTrackPos);
+			if (be instanceof TrackTileEntity tte)
+				tte.bind(otherLevel.dimension(), otherTrackPos);
 
 			otherLevel.setBlock(otherTrackPos, state.setValue(SHAPE, TrackShape.asPortal(otherTrack.getFace()))
-					.setValue(HAS_BE, true), 3);
+					.setValue(HAS_TE, true), 3);
 			BlockEntity otherBE = otherLevel.getBlockEntity(otherTrackPos);
-			if (otherBE instanceof TrackBlockEntity tbe)
-				tbe.bind(level.dimension(), pos);
+			if (otherBE instanceof TrackTileEntity tte)
+				tte.bind(level.dimension(), pos);
 
 			pop = false;
 		}

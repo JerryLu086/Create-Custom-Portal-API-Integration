@@ -1,6 +1,6 @@
 package reign.createaddons.ccpapii.mixin;
 
-import com.simibubi.create.content.contraptions.glue.SuperGlueEntity;
+import com.simibubi.create.content.contraptions.components.structureMovement.glue.SuperGlueEntity;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
