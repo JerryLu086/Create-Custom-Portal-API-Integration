@@ -23,8 +23,7 @@ public abstract class CustomPortalBlockMixin extends Block {
 	// This somehow fixed the portal messing up the position of passengers when teleporting from the other side
 	@Inject(method = "entityInside", at = @At("HEAD"), cancellable = true)
 	private void onEntityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
-		if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions()) {
+		if (entity.isPassenger() || entity.isVehicle() || !entity.canChangeDimensions())
 			ci.cancel();
-		}
 	}
 }

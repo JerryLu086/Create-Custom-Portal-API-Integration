@@ -23,8 +23,10 @@ import net.kyrptonaught.customportalapi.util.CustomTeleporter;
 import net.kyrptonaught.customportalapi.util.PortalLink;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -138,7 +140,7 @@ public abstract class TrackBlockMixin {
 
 		if (portalState.getBlock() instanceof CustomPortalBlock customPortalBlock) {
 			PortalLink link = CustomPortalApiRegistry.getPortalLinkFromBase(customPortalBlock.getPortalBase(level, portalPos));
-			ResourceKey<Level> resourcekey = level.dimension() == CustomPortalsMod.dims.get(link.dimID) ? CustomPortalsMod.dims.get(link.returnDimID) : CustomPortalsMod.dims.get(link.dimID);;
+			ResourceKey<Level> resourcekey = level.dimension() == CustomPortalsMod.dims.get(link.dimID) ? CustomPortalsMod.dims.get(link.returnDimID) : CustomPortalsMod.dims.get(link.dimID);
 			otherLevel = minecraftserver.getLevel(resourcekey);
 		}
 
